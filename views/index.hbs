@@ -1,1 +1,51 @@
-<h2>Hello world! 這是 index</h2>
+<div class="container">
+  <h2 class="text-center text-light p-2">私房錢記帳本</h2>
+  <div class="row">
+    <!-- left side order list -->
+    <div class="col-md-6 p-3">
+      <div class="card">
+        <div class="card-body-totalprice p-3">
+          <h2 class="totalprice">總金額</h2>
+          <h2><span class="badge badge-secondary text-right">{{totalprice}}</span></h2>
+        </div>
+      </div>
+      <div class="dropdown m-2">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          找尋
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="/restaurants/sortrataioRaising">家居物業</a>
+          <a class="dropdown-item" href="/restaurants/sortrataioDescending">交通出行</a>
+          <a class="dropdown-item" href="/restaurants/sortrataioRaising">休閒娛樂</a>
+          <a class="dropdown-item" href="/restaurants/sortrataioDescending">餐飲食品</a>
+          <a class="dropdown-item" href="/restaurants/sortrataioDescending">其他</a>
+        </div>
+      </div>
+      {{#each Records}}
+      <div class="card expense mb-3">
+        <div class="card-body p-2">
+          <div class="text-right">
+            <a href="/records/{{this._id}}/edit">
+              <i class="fas fa-pen-square"></i>
+            </a>
+          </div>
+          <h6 class="card-title mb-1">{{this.name}}</h6>
+          <div class="card-text">{{this.category}}</div>
+          <div class="card-text">{{this.date}}</div>
+          <div class="card-text text-right">$ <span data-drink-price>{{this.amount}}</span></div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <!-- /left side order list-->
+
+    <!-- right side menu -->
+    <div class="col-md-6 p-3">
+      <a href="/records/new">
+        <button type=" button" class="btn btn-light btn-lg btn-block">新增支出</button>
+      </a>
+    </div>
+    <!-- /right side menu -->
+  </div>
+</div>

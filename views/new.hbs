@@ -1,0 +1,43 @@
+<div class="container-new">
+  <h2 class="text-center text-dark p-2">記帳細項</h2>
+  <form action="/records" method="post">
+    <div class="row justify-content-center">
+      <!-- new list -->
+      <div class="col-4">
+        <div class="input-group input-group-lg-name m-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">名稱</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+            name="name">
+        </div>
+
+        <div class="input-group input-group-lg-category m-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">類別</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+            name="category">
+        </div>
+
+        <div class="input-group input-group-lg-category m-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">時間</span>
+          </div>
+          <input type="date" id="start" name="date" value="2010-10-01" min="2020-01-01" max="2030-12-31">
+        </div>
+
+        <div class="input-group input-group-lg-amount m-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">金額</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+            name="amount">
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <button type="submit" class="btn btn-secondary btn-lg m-3">新增支出</button>
+    </div>
+  </form>
+</div>

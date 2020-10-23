@@ -10,7 +10,7 @@ db.on('error', () => {
 db.once('open', () => {
   console.log('mongodb connected!')
   for (let i = 10; i < 100; i = i + 10) {
-    Record.create({ name: '吃飯', category: '餐飲食品', amount: i })
+    Record.create({ name: '吃飯', category: '餐飲食品', amount: i, totalAmount: 100 })
   }
   console.log('done')
 })
