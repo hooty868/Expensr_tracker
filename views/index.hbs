@@ -45,6 +45,13 @@
           </div>
           <div class="row">
             <div class="col-4">
+              {{#switch this.category}}
+              {{#case '家居物業'}} <i class="fas fa-home"></i> {{/case}}
+              {{#case '交通出行'}} <i class="fas fa-shuttle-van"></i> {{/case}}
+              {{#case '休閒娛樂'}} <i class="fas fa-grin-beam"></i> {{/case}}
+              {{#case '餐飲食品'}} <i class="fas fa-utensils"></i> {{/case}}
+              {{#case '其他'}} <i class="fas fa-pen"></i>{{/case}}
+              {{/switch}}
             </div>
             <div class="col-8">
               <h6 class="card-title mb-1">{{this.name}}</h6>

@@ -7,6 +7,16 @@ mongoose.connect('mongodb://localhost/expense-tracker', { useNewUrlParser: true,
 const exphbs = require('express-handlebars')
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
+const Handlebars = require('handlebars')
+Handlebars.registerHelper('switch', function (value, options) {
+  this.switch_value = value
+  return options.fn(this)
+})
+Handlebars.registerHelper('case', function (value, options) {
+  if (value === this.switch_value) {
+    return options.fn(this)
+  }
+})
 
 const Record = require('./models/Record') // 載入 Todo model
 
@@ -22,7 +32,7 @@ const port = 3000
 // global variable//
 app.get('/', (req, res) => {
   // 將資料傳給 index 樣板
-  Record.find({}) // 取出 Todo model 裡的所有資料
+  Record.find() // 取出 Todo model 裡的所有資料
     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列 const totalprice = Records[0].totalAmount
     .then(Records => {
       Record.find() // 取出 Todo model 裡的所有資料
@@ -60,7 +70,7 @@ app.post('/records/new', (req, res) => {
         }))
 })
 
-// view edit restaurant post template
+// view edit expense post template
 app.get('/records/:id/edit', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
