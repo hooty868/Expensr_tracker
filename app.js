@@ -2,7 +2,8 @@ const express = require('express')
 const app = express()
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/expense-tracker', { useNewUrlParser: true, useUnifiedTopology: true }) // 設定連線到 mongoDB
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/todo-list'
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }) // 設定連線到 mongoDB
 
 const exphbs = require('express-handlebars')
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
@@ -26,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }))// 用 app.use 規定每一筆
 // setting static files
 app.use('/css', express.static('css'))
 
-const port = 3000
+const port = process.env.PORT || 3000
 // ----------------set environment-------------------- //
 // global variable//
 app.get('/', (req, res) => {
