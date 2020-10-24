@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-body-totalprice p-3">
           <h2 class="totalprice">總金額</h2>
-          <h2><span class="badge badge-secondary text-right">{{totalprice}}</span></h2>
+          <h2><span class="badge badge-secondary text-right">{{totalAmount}}</span></h2>
         </div>
       </div>
       <div class="dropdown m-2">
@@ -15,25 +15,44 @@
           找尋
         </a>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a class="dropdown-item" href="/restaurants/sortrataioRaising">家居物業</a>
-          <a class="dropdown-item" href="/restaurants/sortrataioDescending">交通出行</a>
-          <a class="dropdown-item" href="/restaurants/sortrataioRaising">休閒娛樂</a>
-          <a class="dropdown-item" href="/restaurants/sortrataioDescending">餐飲食品</a>
-          <a class="dropdown-item" href="/restaurants/sortrataioDescending">其他</a>
+          <form action="/records/{{ Records._id }}" method="post">
+            <label><input type="radio" name="category" value="家居物業">家居物業</label>
+            <label><input type="radio" name="category" value="交通出行">交通出行</label>
+            <label><input type="radio" name="category" value="休閒娛樂">休閒娛樂</label>
+            <label><input type="radio" name="category" value="餐飲食品">餐飲食品</label>
+            <label><input type="radio" name="category" value="其他">其他事項</label>
+          </form>
         </div>
       </div>
       {{#each Records}}
       <div class="card expense mb-3">
         <div class="card-body p-2">
-          <div class="text-right">
-            <a href="/records/{{this._id}}/edit">
-              <i class="fas fa-pen-square"></i>
-            </a>
+          <div class="row">
+            <div class="col-6">
+              <div class="text-left">
+                <a href="/records/{{this._id}}/edit">
+                  <i class="fas fa-pen-square"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="text-right">
+                <form action="./records/{{ this._id }}/delete" method="POST">
+                  <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                </form>
+              </div>
+            </div>
           </div>
-          <h6 class="card-title mb-1">{{this.name}}</h6>
-          <div class="card-text">{{this.category}}</div>
-          <div class="card-text">{{this.date}}</div>
-          <div class="card-text text-right">$ <span data-drink-price>{{this.amount}}</span></div>
+          <div class="row">
+            <div class="col-4">
+            </div>
+            <div class="col-8">
+              <h6 class="card-title mb-1">{{this.name}}</h6>
+              <div class="card-text">{{this.category}}</div>
+              <div class="card-text">{{this.date}}</div>
+              <div class="card-text text-right">$ <span data-drink-price>{{this.amount}}</span></div>
+            </div>
+          </div>
         </div>
       </div>
       {{/each}}

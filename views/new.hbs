@@ -1,6 +1,6 @@
 <div class="container-new">
   <h2 class="text-center text-dark p-2">記帳細項</h2>
-  <form action="/records" method="post">
+  <form action="/records/new" method="post">
     <div class="row justify-content-center">
       <!-- new list -->
       <div class="col-4">
@@ -8,23 +8,32 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-lg">名稱</span>
           </div>
-          <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
-            name="name">
+          <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="name"
+            required>
         </div>
 
         <div class="input-group input-group-lg-category m-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-lg">類別</span>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              類別
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <label><input type="radio" name="category" value="家居物業" required>家居物業</label>
+              <label><input type="radio" name="category" value="交通出行" required>交通出行</label>
+              <label><input type="radio" name="category" value="休閒娛樂" required>休閒娛樂</label>
+              <label><input type="radio" name="category" value="餐飲食品" required>餐飲食品</label>
+              <label><input type="radio" name="category" value="其他" required>其他事項</label>
+            </div>
           </div>
-          <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
-            name="category">
+          <span class="input-group-text" id="inputGroup-sizing-lg">*必填</span>
         </div>
 
         <div class="input-group input-group-lg-category m-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-lg">時間</span>
           </div>
-          <input type="date" id="start" name="date" value="2010-10-01" min="2020-01-01" max="2030-12-31">
+          <input type="date" id="start" name="date" value="2020-10-01" min="2010-01-01" max="2030-12-31" required>
         </div>
 
         <div class="input-group input-group-lg-amount m-3">
@@ -32,7 +41,7 @@
             <span class="input-group-text" id="inputGroup-sizing-lg">金額</span>
           </div>
           <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
-            name="amount">
+            name="amount" required>
         </div>
       </div>
     </div>

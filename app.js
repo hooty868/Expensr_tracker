@@ -25,31 +25,73 @@ app.get('/', (req, res) => {
   Record.find({}) // 取出 Todo model 裡的所有資料
     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列 const totalprice = Records[0].totalAmount
     .then(Records => {
-      Record.find({}) // 取出 Todo model 裡的所有資料
-        .sort({ _id: -1 })
+      Record.find() // 取出 Todo model 裡的所有資料
         .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列 const totalprice = Records[0].totalAmount
         .then(Records => {
-          const totalprice = Records[0].totalAmount
-          return totalprice
-        })
-        .then(totalprice => res.render('index', { Records, totalprice })
-        )
-    })// 將資料傳給 index 樣板
-    .catch(error => console.error(error)) // 錯誤處理
+          const totalAmount = Records.map(item => item.amount).reduce((a, b) => a + b)
+          res.render('index', { Records, totalAmount })
+        })// 將資料傳給 index 樣板
+        .catch(error => console.error(error)) // 錯誤處理
+    })
 })
 
 app.get('/records/new', (req, res) => {
   return res.render('new')
 })
 
-app.post('/records', (req, res) => {
+app.post('/records/new', (req, res) => {
   const name = req.body.name// 從 req.body 拿出表單裡的 name 資料
   const category = req.body.category// 從 req.body 拿出表單裡的 name 資料
   const date = req.body.date// 從 req.body 拿出表單裡的 name 資料
-  const amount = req.body.amount// 從 req.body 拿出表單裡的 name 資料
-  console.log(req.body)
-  return Record.create({ name, category, date, amount })// 存入資料庫
-    .then(() => res.redirect('/')) // 新增完成後導回首頁
+  const amount = Number(req.body.amount)// 從 req.body 拿出表單裡的 name 資料
+  Record.countDocuments({ type: Number })
+    .then(count => {
+      const id = count + 1
+      return id
+    })
+    .then(id =>
+      Record.find() // 取出 Todo model 裡的所有資料
+        .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列 const totalprice = Records[0].totalAmount
+        .then(Records => {
+          const totalAmount = Records.map(item => item.amount).reduce((a, b) => a + b) + amount
+          Record.create({ id, name, category, date, amount, totalAmount })// 存入資料庫
+            .then(() => res.redirect('/')) // 新增完成後導回首頁
+            .catch(error => console.log(error))
+        }))
+})
+
+// view edit restaurant post template
+app.get('/records/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .lean()
+    .then(Records => res.render('edit', { Records }))
+    .catch(error => console.log(error))
+})
+
+app.post('/records/:id', (req, res) => {
+  const id = req.params.id
+  const name = req.body.name// 從 req.body 拿出表單裡的 name 資料
+  const category = req.body.category// 從 req.body 拿出表單裡的 name 資料
+  const date = req.body.date// 從 req.body 拿出表單裡的 name 資料
+  const amount = Number(req.body.amount)// 從 req.body 拿出表單裡的 name 資料
+  return Record.findById(id)
+    .then(Records => {
+      Records.name = name
+      Records.category = category
+      Records.date = date
+      Records.amount = amount
+      return Records.save()
+    })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+app.post('/records/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Record.findById(id)
+    .then(Records => Records.remove())
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 

@@ -1,0 +1,51 @@
+<div class="container-new">
+  <h2 class="text-center text-dark p-2">編輯記帳</h2>
+  <form action="/records/{{ Records._id }}" method="post">
+    <div class="row justify-content-center">
+      <!-- new list -->
+      <div class="col-4">
+        <div class="input-group input-group-lg-name m-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">名稱</span>
+          </div>
+          <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="name"
+            value="{{ Records.name }}">
+        </div>
+
+        <div class="input-group input-group-lg-category m-3">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              類別
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <label><input type="radio" name="category" value="家居物業">家居物業</label>
+              <label><input type="radio" name="category" value="交通出行">交通出行</label>
+              <label><input type="radio" name="category" value="休閒娛樂">休閒娛樂</label>
+              <label><input type="radio" name="category" value="餐飲食品">餐飲食品</label>
+              <label><input type="radio" name="category" value="其他">其他事項</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group input-group-lg-category m-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">時間</span>
+          </div>
+          <input type="date" id="start" name="date" value="{{ Records.date }}" min="2020-01-01" max="2030-12-31">
+        </div>
+
+        <div class="input-group input-group-lg-amount m-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-lg">金額</span>
+          </div>
+          <input type="number" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+            name="amount" value="{{ Records.amount }}">
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <button type="submit" class="btn btn-secondary btn-lg m-3">修改支出</button>
+    </div>
+  </form>
+</div>

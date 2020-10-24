@@ -1,7 +1,5 @@
-/* Remove this block after finishing layout */
-.col-md-6, .col-md-6 {
-  outline: 1px solid steelblue;
-  min-height: 600px;
+.container{
+  max-width: 500px;
 }
 .card-body-totalprice{
   display: flex;
@@ -10,6 +8,7 @@
 }
 
 .container-new{
+  min-width: 500px;
   border-radius: 3px;
 }
 
