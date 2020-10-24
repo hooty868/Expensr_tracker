@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 const mongoose = require('mongoose')
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/todo-list'
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/expense-tracker'
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }) // 設定連線到 mongoDB
 
 const exphbs = require('express-handlebars')
@@ -62,10 +62,17 @@ app.post('/records/new', (req, res) => {
       Record.find() // 取出 Todo model 裡的所有資料
         .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列 const totalprice = Records[0].totalAmount
         .then(Records => {
-          const totalAmount = Records.map(item => item.amount).reduce((a, b) => a + b) + amount
-          Record.create({ id, name, category, date, amount, totalAmount })// 存入資料庫
-            .then(() => res.redirect('/')) // 新增完成後導回首頁
-            .catch(error => console.log(error))
+          if (Records.length) {
+            const totalAmount = Records.map(item => item.amount).reduce((a, b) => a + b) + amount
+            Record.create({ id, name, category, date, amount, totalAmount })// 存入資料庫
+              .then(() => res.redirect('/')) // 新增完成後導回首頁
+              .catch(error => console.log(error))
+          } else {
+            const totalAmount = 0
+            Record.create({ id, name, category, date, amount, totalAmount })// 存入資料庫
+              .then(() => res.redirect('/')) // 新增完成後導回首頁
+              .catch(error => console.log(error))
+          }
         }))
 })
 
