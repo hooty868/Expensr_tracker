@@ -34,8 +34,12 @@ app.get('/', (req, res) => {
   Record.find() // 取出 Record model 裡的所有資料
     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
     .then(Records => {
-      const totalAmount = Records.map(item => item.amount).reduce((a, b) => a + b)
-      res.render('index', { Records, totalAmount })
+      if (Records.length) {
+        const totalAmount = Records.map(item => item.amount).reduce((a, b) => a + b)
+        res.render('index', { Records, totalAmount })
+      } else {
+        res.render('index', { Records })
+      }
     })
     .catch(error => console.error(error)) // 錯誤處理
 })
