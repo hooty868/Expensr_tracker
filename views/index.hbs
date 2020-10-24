@@ -10,17 +10,17 @@
         </div>
       </div>
       <div class="dropdown m-2">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           找尋
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <form action="/records/{{ Records._id }}" method="post">
-            <label><input type="radio" name="category" value="家居物業">家居物業</label>
-            <label><input type="radio" name="category" value="交通出行">交通出行</label>
-            <label><input type="radio" name="category" value="休閒娛樂">休閒娛樂</label>
-            <label><input type="radio" name="category" value="餐飲食品">餐飲食品</label>
-            <label><input type="radio" name="category" value="其他">其他事項</label>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <form action="/records/search">
+            <button class="dropdown-item" name="keyword" value="家居物業">家居物業</button>
+            <button class="dropdown-item" name="keyword" value="交通出行">交通出行</button>
+            <button class="dropdown-item" name="keyword" value="休閒娛樂">休閒娛樂</button>
+            <button class="dropdown-item" name="keyword" value="餐飲食品">餐飲食品</button>
+            <button class="dropdown-item" name="keyword" value="其他事項">其他事項</button>
           </form>
         </div>
       </div>
