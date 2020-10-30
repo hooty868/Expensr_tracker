@@ -13,19 +13,19 @@
         </div>
 
         <div class="input-group input-group-lg-category m-3">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              類別
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <label><input type="radio" name="category" value="家居物業">家居物業</label>
-              <label><input type="radio" name="category" value="交通出行">交通出行</label>
-              <label><input type="radio" name="category" value="休閒娛樂">休閒娛樂</label>
-              <label><input type="radio" name="category" value="餐飲食品">餐飲食品</label>
-              <label><input type="radio" name="category" value="其他">其他事項</label>
-            </div>
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="exampleSelect1">排序</span>
           </div>
+          <select class="form-control" id="exampleSelect1" style="cursor: pointer" name="category" required>
+            <option value="" disabled selected>種類</option>
+            {{#switch Records.category}}
+            <option value="家居物業" {{#case '家居物業'}} selected {{/case}}>家居物業</option>
+            <option value="交通出行" {{#case '交通出行'}} selected {{/case}}>交通出行</option>
+            <option value="休閒娛樂" {{#case '休閒娛樂'}} selected {{/case}}>休閒娛樂</option>
+            <option value="餐飲食品" {{#case '餐飲食品'}} selected {{/case}}>餐飲食品</option>
+            <option value="其他" {{#case '其他'}} selected {{/case}}>其他</option>
+            {{/switch}}
+          </select>
         </div>
 
         <div class="input-group input-group-lg-category m-3">
