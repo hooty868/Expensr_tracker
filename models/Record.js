@@ -14,7 +14,8 @@ const RecordSchema = new Schema({
     required: true // 這是個必填欄位
   },
   date: {
-    type: String // 資料型別是字串
+    type: String, // 資料型別是字串
+    required: true // 這是個必填欄位
   },
   amount: {
     type: Number, // 資料型別是數字
@@ -24,4 +25,4 @@ const RecordSchema = new Schema({
     type: Number // 資料型別是數字
   }
 })
-module.exports = mongoose.model('recordExpense', RecordSchema)
+module.exports = mongoose.model('Record', RecordSchema)

@@ -13,27 +13,24 @@
         </div>
 
         <div class="input-group input-group-lg-category m-3">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              類別
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <label><input type="radio" name="category" value="家居物業" required>家居物業</label>
-              <label><input type="radio" name="category" value="交通出行" required>交通出行</label>
-              <label><input type="radio" name="category" value="休閒娛樂" required>休閒娛樂</label>
-              <label><input type="radio" name="category" value="餐飲食品" required>餐飲食品</label>
-              <label><input type="radio" name="category" value="其他" required>其他事項</label>
-            </div>
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="exampleSelect1">排序</span>
           </div>
-          <span class="input-group-text" id="inputGroup-sizing-lg">*必填</span>
+          <select class="form-control" id="exampleSelect1" style="cursor: pointer" name="category" required>
+            <option value="" disabled selected>種類</option>
+            <option value="家居物業">家居物業</option>
+            <option value="交通出行">交通出行</option>
+            <option value="休閒娛樂">休閒娛樂</option>
+            <option value="餐飲食品">餐飲食品</option>
+            <option value="其他">其他</option>
+          </select>
         </div>
 
         <div class="input-group input-group-lg-category m-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-lg">時間</span>
           </div>
-          <input type="date" id="start" name="date" value="2020-10-01" min="2010-01-01" max="2030-12-31" required>
+          <input type="date" id="start" name="date" style="" value="" min="2010-01-01" max="2030-12-31" required>
         </div>
 
         <div class="input-group input-group-lg-amount m-3">
