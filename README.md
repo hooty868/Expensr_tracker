@@ -4,7 +4,7 @@
 近期在新增：登入帳號密碼畫面，及驗證帳密功能
 
 ## 畫面截圖
-![首頁](https://github.com/hooty868/Expensr_tracker/blob/main/public/screenshot/screenshot20101025.png)
+![首頁](https://github.com/hooty868/Expensr_tracker/blob/main/public/screenshot/screenshot20201030.png)
 
 ## Features - 產品功能
 
