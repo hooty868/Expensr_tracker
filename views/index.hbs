@@ -1,17 +1,10 @@
 <div class="container">
   <h2 class="text-center text-light p-2">私房錢記帳本</h2>
-  <div class="row">
-    <!-- left side order list -->
-    <div class="col-md-6 p-3">
-      <div class="card">
-        <div class="card-body-totalprice p-3">
-          <h2 class="totalprice">總金額</h2>
-          <h2><span class="badge badge-secondary text-right">{{totalAmount}}</span></h2>
-        </div>
-      </div>
-      <div class="dropdown m-2">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
+  <div class="row search-category w-100">
+    <div class="col-12">
+      <div class="dropdown m-2 w-100">
+        <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           找尋
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -24,40 +17,63 @@
           </form>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <!-- left side order list -->
+    <div class="col-12 ">
+      <div class="card mt-3 mb-3">
+        <div class="card-body-totalprice p-3">
+          <h2 class="totalprice">總金額</h2>
+          <h2><span class="text-right" style="color: rgb(255, 136, 0);">{{totalAmount}}</span>
+          </h2>
+        </div>
+      </div>
+
       {{#each Records}}
       <div class="card expense mb-3">
         <div class="card-body p-2">
           <div class="row">
-            <div class="col-6">
-              <div class="text-left">
-                <a href="/records/{{this._id}}/edit">
-                  <i class="fas fa-pen-square"></i>
-                </a>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="text-right">
-                <form action="./records/{{ this._id }}/delete" method="POST">
-                  <button type="submit"><i class="fas fa-trash-alt"></i></button>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-4">
+            <div class="col-2">
               {{#switch this.category}}
-              {{#case '家居物業'}} <span class="logo-category"><i class="fas fa-home"></i></span> {{/case}}
-              {{#case '交通出行'}} <span class="logo-category"><i class="fas fa-shuttle-van"></i></span> {{/case}}
-              {{#case '休閒娛樂'}} <span class="logo-category"><i class="fas fa-grin-beam"></i></span> {{/case}}
-              {{#case '餐飲食品'}} <span class="logo-category"><i class="fas fa-utensils"></i></span>{{/case}}
-              {{#case '其他'}} <i class="fas fa-pen"></i>{{/case}}
+              {{#case '家居物業'}} <span class="logo-category"><i class="fas fa-home"
+                  style="color: brown;"></i></span>{{/case}}
+              {{#case '交通出行'}} <span class="logo-category" style="color:cadetblue;"><i
+                  class="fas fa-shuttle-van"></i></span> {{/case}}
+              {{#case '休閒娛樂'}} <span class="logo-category" style="color:coral"><i class="fas fa-grin-beam"></i></span>
+              {{/case}}
+              {{#case '餐飲食品'}} <span class="logo-category" style="color:darkmagenta;"><i
+                  class="fas fa-utensils"></i></span>{{/case}}
+              {{#case '其他'}} <i class="fas fa-pen" style="color:darkgoldenrod;"></i>{{/case}}
               {{/switch}}
             </div>
-            <div class="col-8">
+            <div class="col-6">
               <h6 class="card-title mb-1">{{this.name}}</h6>
               <div class="card-text">{{this.category}}</div>
               <div class="card-text">{{this.date}}</div>
+            </div>
+            <div class="col-2">
               <div class="card-text text-right">$ <span data-drink-price>{{this.amount}}</span></div>
+            </div>
+            <div class="col-2">
+              <div class="row">
+                <div class="col-12">
+                  <div class="text-right">
+                    <a href="/records/{{this._id}}/edit">
+                      <i class="fas fa-pen-square"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="text-right">
+                    <form action="./records/{{ this._id }}/delete" method="POST">
+                      <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -65,11 +81,12 @@
       {{/each}}
     </div>
     <!-- /left side order list-->
-
+  </div>
+  <div class="row">
     <!-- right side menu -->
-    <div class="col-md-6 p-3">
+    <div class="col-12 p-3">
       <a href="/records/new">
-        <button type=" button" class="btn btn-light btn-lg btn-block">新增支出</button>
+        <button type="button" class="btn btn-light btn-lg btn-block">新增支出</button>
       </a>
     </div>
     <!-- /right side menu -->

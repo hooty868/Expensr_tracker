@@ -1,6 +1,10 @@
-.container{
+.container {
+  background-color: rgba(0, 0, 0, 0.8);
   max-width: 500px;
+  margin: 0 auto; /* 置中的意思*/
+  height: auto;
 }
+
 .card-body-totalprice{
   display: flex;
   widows: 100%;
@@ -27,17 +31,6 @@
   color: #333;
 }
 
-.container {
-  background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 3px;
-}
-
-.container {
-  background-color: rgba(0, 0, 0, 0.8);
-  max-width: 500px;
-  margin: 0 auto; /* 置中的意思*/
-  height: 200px;
-}
 
 .menu{
   width: 30%;
@@ -48,5 +41,9 @@
 
 .logo-category i { 
   font-size: 50px;
+}
+
+.fa-pen-square {
+  font-size: 35px;
 }
 
